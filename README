@@ -1,0 +1,16 @@
+- [lien amazon](https://www.amazon.fr/dp/B07DKFWBH4?ref_=pe_27091421_487057731_E_304_dt_1)
+- [doc waveshare](https://www.waveshare.com/wiki/E-Paper_ESP8266_Driver_Board)
+
+---
+
+| Pin  | ESP8266        | Description                           |
+|------|----------------|---------------------------------------|
+| VCC  | VCC            | Power input (3.3V)                     |
+| GND  | GND            | Ground                                |
+| DIN  | GPIO13 (D7)    | SPI MOSI, data input                   |
+| SCK  | GPIO14 (D5)    | SPI CLK, clock signal input            |
+| CS   | GPIO15 (D8)    | Chip selection, low active             |
+| DC   | GPIO4 (D2)     | Data/command, low for commands, high for data |
+| RST  | GPIO2 (D4)     | Reset, low active                      |
+| BUSY | GPIO5 (D1)     | Bust status output pin (busy)          |
+
