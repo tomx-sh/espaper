@@ -28,7 +28,7 @@
 #
 ******************************************************************************/
 #include "EPD_1in54_V2.h"
-#include "Debug.h"
+
 
 // waveform full refresh
 unsigned char WF_Full_1IN54[159] =
@@ -124,11 +124,9 @@ parameter:
 ******************************************************************************/
 static void EPD_1IN54_V2_ReadBusy(void)
 {
-    Debug("e-Paper busy\r\n");
     while(DEV_Digital_Read(EPD_BUSY_PIN) == 1) {      //LOW: idle, HIGH: busy
         DEV_Delay_ms(1);
     }
-    Debug("e-Paper busy release\r\n");
 }
 
 /******************************************************************************

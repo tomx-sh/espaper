@@ -85,7 +85,6 @@
 #
 ******************************************************************************/
 #include "EPD_1in54.h"
-#include "Debug.h"
 
 static const unsigned char EPD_1IN54_lut_full_update[] = {
     0x02, 0x02, 0x01, 0x11, 0x12, 0x12, 0x22, 0x22,
@@ -147,11 +146,9 @@ parameter:
 ******************************************************************************/
 void EPD_1IN54_ReadBusy(void)
 {
-    Debug("e-Paper busy\r\n");
     while(DEV_Digital_Read(EPD_BUSY_PIN) == 1) {      //LOW: idle, HIGH: busy
         DEV_Delay_ms(100);
     }
-    Debug("e-Paper busy release\r\n");
 }
 
 /******************************************************************************
@@ -240,7 +237,7 @@ void EPD_1IN54_Init(UBYTE Mode)
                 EPD_1IN54_SendData(EPD_1IN54_lut_partial_update[i]);
         }
     }else{
-        Debug("error, the Mode is EPD_1IN54_FULL or EPD_1IN54_PART");
+        //Debug("error, the Mode is EPD_1IN54_FULL or EPD_1IN54_PART");
     }
     
 }

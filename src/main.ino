@@ -1,17 +1,15 @@
-/* Includes ------------------------------------------------------------------*/
+#include <Arduino.h>
 #include "DEV_Config.h"
 #include "EPD.h"
 #include "GUI_Paint.h"
 #include "imagedata.h"
 #include <stdlib.h>
 
-/* Entry point ----------------------------------------------------------------*/
+
 void setup()
 {
-  printf("EPD_1IN54_test v2 Demo\r\n");
   DEV_Module_Init();
 
-  printf("e-Paper Init and Clear...\r\n");
     EPD_1IN54_V2_Init();
     EPD_1IN54_V2_Clear();
     DEV_Delay_ms(500);
@@ -24,11 +22,9 @@ void setup()
         printf("Failed to apply for black memory...\r\n");
         while(1);
     }
-    printf("Paint_NewImage\r\n");
     Paint_NewImage(BlackImage, EPD_1IN54_V2_WIDTH, EPD_1IN54_V2_HEIGHT, 270, WHITE);
     
 #if 1   //show image for array    
-    printf("show image for array\r\n");
     Paint_SelectImage(BlackImage);
     Paint_Clear(WHITE);
     Paint_DrawBitMap(gImage_1in54);
@@ -38,7 +34,6 @@ void setup()
 #endif
 
 #if 1   // Drawing on the image
-    printf("Drawing\r\n");
     //1.Select Image
     Paint_SelectImage(BlackImage);
     Paint_Clear(WHITE);
@@ -62,9 +57,6 @@ void setup()
     Paint_DrawString_EN(5, 85, "waveshare", &Font20, BLACK, WHITE);
     Paint_DrawNum(5, 110, 123456789, &Font20, BLACK, WHITE);
 
-    Paint_DrawString_CN(5, 135,"你好abc", &Font12CN, BLACK, WHITE);
-    Paint_DrawString_CN(5, 155, "微雪电子", &Font24CN, WHITE, BLACK);
-
     EPD_1IN54_V2_Display(BlackImage);
     DEV_Delay_ms(2000);
 #endif
@@ -76,7 +68,6 @@ void setup()
     EPD_1IN54_V2_Init();
     EPD_1IN54_V2_DisplayPartBaseImage(BlackImage);
     EPD_1IN54_V2_Init_Partial();
-    printf("Partial refresh\r\n");
     Paint_SelectImage(BlackImage);
     PAINT_TIME sPaint_time;
     sPaint_time.Hour = 12;
@@ -110,11 +101,9 @@ void setup()
 
 #endif
 
-    printf("Clear...\r\n");
     EPD_1IN54_V2_Init();
     EPD_1IN54_V2_Clear();
 
-    printf("Goto Sleep...\r\n");
     EPD_1IN54_V2_Sleep();
     free(BlackImage);
     BlackImage = NULL;

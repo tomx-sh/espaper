@@ -92,7 +92,6 @@
 #
 ******************************************************************************/
 #include "EPD_1in54b.h"
-#include "Debug.h"
 
 const unsigned char EPD_1IN54B_lut_vcom0[] = {0x0E, 0x14, 0x01, 0x0A, 0x06, 0x04, 0x0A, 0x0A, 0x0F, 0x03, 0x03, 0x0C, 0x06, 0x0A, 0x00};
 const unsigned char EPD_1IN54B_lut_w[] = {0x0E, 0x14, 0x01, 0x0A, 0x46, 0x04, 0x8A, 0x4A, 0x0F, 0x83, 0x43, 0x0C, 0x86, 0x0A, 0x04};
@@ -149,13 +148,11 @@ parameter:
 ******************************************************************************/
 static void EPD_1IN54B_ReadBusy(void)
 {
-    Debug("e-Paper busy\r\n");
     while(1) {
         if(DEV_Digital_Read(EPD_BUSY_PIN) == 1)
             break;
     }
     DEV_Delay_ms(200);
-    Debug("e-Paper busy release\r\n");
 }
 
 /******************************************************************************

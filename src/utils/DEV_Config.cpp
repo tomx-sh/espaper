@@ -27,6 +27,7 @@
 # THE SOFTWARE.
 #
 ******************************************************************************/
+#include <Arduino.h>
 #include "DEV_Config.h"
 
 void GPIO_Config(void)
